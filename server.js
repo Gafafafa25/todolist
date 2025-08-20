@@ -1,13 +1,6 @@
-
+require('dotenv').config();
 const express = require('express');
 const { Pool } = require('pg');
-
-
-
-import express from 'express';
-import pkg from 'pg';
-
-const { Pool } = pkg;
 
 const pool = new Pool({
     host: process.env.DB_HOST,
@@ -23,7 +16,7 @@ app.use(express.json());
 app.post('/addNewToDo', async (req, res) => {
     const d = req.body;
     try {
-        const result = await pool.query('INSERT INTO todolist VALUES(DEFAULT, $1)',
+        const result = await pool.query('INSERT INTO tasks VALUES(DEFAULT, $1)',
             [d.li]);
         res.json(result.rows[0]);
     } catch (err) {
@@ -32,15 +25,15 @@ app.post('/addNewToDo', async (req, res) => {
     }
 });
 
-// app.get('/users', async (req, res) => {
-//     try {
-//         const result = await pool.query('SELECT * FROM users');
-//         res.json(result.rows);
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).send('Database error');
-//     }
-// });
+app.get('/tasks', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM tasks');
+        res.json(result.rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Database error');
+    }
+});
 
 app.listen(3000, () => {
     console.log('Server running on http://localhost:3000');
