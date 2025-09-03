@@ -6,16 +6,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>ToDO list</h1>
+<div class="mt-10 flex flex-col justify-center items-center h-screen">
+    <h1 class="m-10 text-center text-4xl font-bold text-blue-600">ToDO list</h1>
 <form action="addNewToDo" method="post">
     <div class="addToDo">
         <label for="todoName">New ToDo</label>
-        <input type="text" id="todoName" name="todoName"/>
+        <input type="text" id="todoName" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" name="todoName"/>
 
-        <button type="button" id="addTodoBtn" class="btn">Add</button>
+        <button type="submit" id="addTodoBtn" class="btn bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Add</button>
     </div>
-    <ul id="list"></ul>
+    <ul id="list" class=" mt-5"></ul>
 </form>
+</div>
 <script src="index.js"></script>
 </body>
 </html>

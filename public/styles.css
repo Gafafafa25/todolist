@@ -1,8 +1,10 @@
-h1 {
-    text-align: center;
-}
+@import "tailwindcss";
 
-.addTodo {
-    text-align: center;
-}
+/*h1 {*/
+/*    text-align: center;*/
+/*}*/
+
+/*.addTodo {*/
+/*    text-align: center;*/
+/*}*/
 
