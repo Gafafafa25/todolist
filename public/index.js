@@ -8,16 +8,27 @@ function createList(tasks) {
     }
 }
 
+let data = {
+    "tasks" : []
+}
 
-document.addEventListener('DOMContentLoaded', function () {
-    fetch("/tasks").then((response) => {
-        console.log(response)
-        return response.json();
-    }).then((tasks) => {
-        console.log(tasks)
+//todo:
+// document.addEventListener('DOMContentLoaded', function () {
+//     fetch("/tasks").then((response) => {
+//         console.log(response)
+//         return response.json();
+//     }).then((tasks) => {
+//         console.log(tasks)
+//
+//         createList(tasks)
+//     })
+// })
 
-        createList(tasks)
-    })
+document.addEventListener('DOMContentLoaded', async function () {
+    let response = await fetch("/tasks")
+    data.tasks = await response.json()
+    console.log(data.tasks)
+    createList(data.tasks)
 })
 
 
