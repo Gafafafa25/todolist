@@ -8,3 +8,14 @@
 /*    text-align: center;*/
 /*}*/
 
+.removeBtn, .isDoneBtn {
+    float: right;
+}
+
+.opacityTest {
+    opacity: 0.1;
+}
+
+.opacityTest:hover {
+    opacity: 1;
+}

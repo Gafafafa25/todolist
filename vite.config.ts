@@ -7,7 +7,9 @@ export default defineConfig(async () => {
         plugins: [tailwind()],
         server: {
             proxy: {
-                '/tasks': 'http://localhost:3000'
+                '/tasks': 'http://localhost:3000',
+                '/removeQuestion': 'http://localhost:3000',
+                '/markQuestion': 'http://localhost:3000'
             }
         },
         build: {

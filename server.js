@@ -42,6 +42,33 @@ app.get('/tasks', async (req, res) => {
     }
 });
 
+app.post('/removeQuestion', async (req, res) => {
+    const answers = req.body;
+    console.log(req.body)
+    //запрос в базу
+    try {
+        const result = await pool.query("UPDATE tasks SET is_removed = true WHERE task_id = $1", [req.body.taskId]);
+        console.log(result)
+    } catch (err) {
+        res.status(500).send('Database error');
+    }
+    res.json({status: 'success'});
+})
+
+app.post('/markQuestion', async (req, res) => {
+    const answers = req.body;
+    console.log(req.body)
+    //запрос в базу
+    try {
+        const result = await pool.query("UPDATE tasks SET task_done = true WHERE task_id = $1", [req.body.taskId]);
+        console.log(result)
+    } catch (err) {
+        res.status(500).send('Database error');
+    }
+    res.json({status: 'success'});
+})
+
+
 app.listen(3000, () => {
     console.log('Server running on http://localhost:3000');
 });
